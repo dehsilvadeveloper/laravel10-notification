@@ -6,7 +6,7 @@
 
 This is a Laravel v10.x application to control notifications using a Dockerized environment. 
 
-The project was created for learn/check features of Laravel.
+The project was created for learn/check features of **Laravel 10**.
 
 ## Build with
 
@@ -19,12 +19,15 @@ The project was created for learn/check features of Laravel.
 | Redis | v6.2.x |
 | Mysql | v8.0.x |
 
+## Objectives
+
+- Use concepts of single action controllers
+- Use concepts of service pattern
+- Use concepts of repository pattern
+- Create unit tests for the application
+
 ## Docs
 
 * [Getting Started](./docs/getting_started.md)
-* [Folder Structure](./docs/folder_structure.md)
-* [Api Versioning](./docs/api_versioning.md)
-* [About Prisma Schema](./docs/about_prisma_schema.md)
 * [CORS](./docs/cors.md)
-* [Available NPM Scripts](./docs/available_npm_scripts.md)
 * [Available Make Scripts](./docs/available_make_scripts.md)
