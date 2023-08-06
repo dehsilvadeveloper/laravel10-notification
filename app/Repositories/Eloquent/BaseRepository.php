@@ -5,6 +5,7 @@ namespace App\Repositories\Eloquent;
 use App\Repositories\Eloquent\Interfaces\EloquentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class BaseRepository implements EloquentRepositoryInterface
 {
@@ -15,9 +16,9 @@ class BaseRepository implements EloquentRepositoryInterface
         $this->model = $model;
     }
 
-    public function create(array $attributes): Model
+    public function create(array $data): Model
     {
-        return $this->model->create($attributes);
+        return $this->model->create($data);
     }
 
     public function update(int $id, array $data): Model
@@ -32,6 +33,14 @@ class BaseRepository implements EloquentRepositoryInterface
     public function findAll(array $columns = ['*']): Collection
     {
         return $this->model->get($columns);
+    }
+
+    public function findAllPaginated(int $pageSize = 10, array $columns = ['*']): LengthAwarePaginator
+    {
+        $paginatedItems = $this->model->paginate($pageSize, $columns);
+        $paginatedItems->appends(['page_size' => $pageSize]);
+
+        return $paginatedItems;
     }
 
     public function findById(int $id, array $columns = ['*']): ?Model
