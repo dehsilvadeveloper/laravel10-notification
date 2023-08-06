@@ -1,0 +1,67 @@
+# Compiled output
+/build
+/dist
+/node_modules
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.vscode
+/.fleet
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Temporary files
+tmp/*
+
+# Environment files
+.env
+.env.backup
+.env.production
+
+# Docker
+.docker/mysql/dbdata
+
+# Homestead
+Homestead.json
+Homestead.yaml
+
+# Laravel
+/public/build
+/public/hot
+/public/storage
+/.phpunit.cache
+.phpunit.result.cache
+/vendor
+/storage/*.key
+# Ignore the file inside the folders, but keep the folder structure
+/storage/framework/cache/**
+/storage/framework/sessions/**
+/storage/framework/view/**
