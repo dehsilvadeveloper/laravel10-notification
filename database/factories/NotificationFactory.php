@@ -18,7 +18,7 @@ class NotificationFactory extends Factory
     public function definition(): array
     {
         return [
-            'recipient_id' => fake()->randomNumber(10),
+            'recipient_id' => fake()->randomNumber(9),
             'content' => fake()->sentence(),
             'category' => fake()->randomElement(NotificationCategoryEnum::class)
         ];
