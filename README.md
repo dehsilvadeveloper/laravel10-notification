@@ -24,7 +24,7 @@ The project was created for learn/check features of **Laravel 10**.
 - Use concepts of single action controllers
 - Use concepts of service pattern
 - Use concepts of repository pattern
-- Create unit tests for the application
+- Create unit tests for the application using PHPUNIT
 
 ## Docs
 

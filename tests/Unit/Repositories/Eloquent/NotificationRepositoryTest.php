@@ -2,9 +2,11 @@
 
 namespace Tests\Unit\Repositories\Eloquent;
 
+use App\Enums\NotificationCategoryEnum;
 use App\Models\Notification;
 use App\Repositories\Interfaces\NotificationRepositoryInterface;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Tests\TestCase;
 
 class NotificationRepositoryTest extends TestCase
@@ -26,7 +28,16 @@ class NotificationRepositoryTest extends TestCase
      */
     public function test_should_create(): void
     {
-        $this->assertTrue(true);
+        $data = [
+            'recipient_id' => 1,
+            'content' => fake()->sentence(),
+            'category' => fake()->randomElement(NotificationCategoryEnum::class)
+        ];
+
+        $createdNotification = $this->notificationRepository->create($data);
+
+        $this->assertInstanceOf(Notification::class, $createdNotification);
+        $this->assertDatabaseHas('notifications', $data);
     }
 
     /**
@@ -34,7 +45,21 @@ class NotificationRepositoryTest extends TestCase
      */
     public function test_should_update(): void
     {
-        $this->assertTrue(true);
+        $existingNotification = Notification::factory()->create([
+            'content' => 'initial content',
+            'category' => NotificationCategoryEnum::SOCIAL
+        ]);
+
+        $dataForUpdate = [
+            'content' => 'Updated content',
+            'category' => NotificationCategoryEnum::PROFESSIONAL
+        ];
+
+        $updatedNotification = $this->notificationRepository->update($existingNotification->id, $dataForUpdate);
+
+        $this->assertInstanceOf(Notification::class, $updatedNotification);
+        $this->assertEquals($dataForUpdate['content'], $updatedNotification->content);
+        $this->assertEquals($dataForUpdate['category'], $updatedNotification->category);
     }
 
     /**
@@ -44,12 +69,21 @@ class NotificationRepositoryTest extends TestCase
     {
         $notificationCount = 3;
 
-        Notification::factory()->count($notificationCount)->create();
+        $notificationData = Notification::factory()->count($notificationCount)->create();
+        $notificationDataAsArray = $notificationData->toArray();
 
         $result = $this->notificationRepository->findAll();
+        $resultAsArray = $result->toArray();
 
         $this->assertCount($notificationCount, $result);
-        // Add more asserts
+
+        for ($i = 0; $i <= ($notificationCount - 1); $i++) {
+            $this->assertEquals($notificationDataAsArray[$i]['recipient_id'], $resultAsArray[$i]['recipient_id']);
+            $this->assertEquals($notificationDataAsArray[$i]['content'], $resultAsArray[$i]['content']);
+            $this->assertEquals($notificationDataAsArray[$i]['category'], $resultAsArray[$i]['category']);
+            $this->assertEquals($notificationDataAsArray[$i]['created_at'], $resultAsArray[$i]['created_at']);
+            $this->assertEquals($notificationDataAsArray[$i]['updated_at'], $resultAsArray[$i]['updated_at']);
+        }
     }
 
     /**
@@ -57,7 +91,25 @@ class NotificationRepositoryTest extends TestCase
      */
     public function test_should_find_all_paginated(): void
     {
-        $this->assertTrue(true);
+        $notificationCount = 20;
+        $pageSize = 10;
+        $page = 2;
+
+        $notificationData = Notification::factory()->count($notificationCount)->create();
+        $notificationDataAsArray = $notificationData->toArray();
+
+        $result = $this->notificationRepository->findAllPaginated($page, $pageSize);
+        $resultAsArray = $result->toArray();
+
+        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
+        $this->assertEquals($notificationCount, $resultAsArray['total']);
+        $this->assertEquals($pageSize, $resultAsArray['per_page']);
+        $this->assertEquals($page, $resultAsArray['current_page']);
+        $this->assertEquals($notificationDataAsArray[10]['recipient_id'], $resultAsArray['data'][0]['recipient_id']);
+        $this->assertEquals($notificationDataAsArray[10]['content'], $resultAsArray['data'][0]['content']);
+        $this->assertEquals($notificationDataAsArray[10]['category'], $resultAsArray['data'][0]['category']);
+        $this->assertEquals($notificationDataAsArray[10]['created_at'], $resultAsArray['data'][0]['created_at']);
+        $this->assertEquals($notificationDataAsArray[10]['updated_at'], $resultAsArray['data'][0]['updated_at']);
     }
 
     /**
@@ -95,7 +147,32 @@ class NotificationRepositoryTest extends TestCase
      */
     public function test_should_find_many_by_recipient_id(): void
     {
-        $this->assertTrue(true);
+        $notificationCount = 5;
+        $recipientId = 7;
+
+        $notificationData = Notification::factory()
+            ->count($notificationCount)
+            ->create([
+                'recipient_id' => $recipientId
+            ]);
+
+        Notification::factory()
+            ->create([
+                'recipient_id' => ($recipientId + 1)
+            ]);
+
+        $notificationDataAsArray = $notificationData->toArray();
+
+        $result = $this->notificationRepository->findManyByRecipientId($recipientId);
+        $resultAsArray = $result->toArray();
+
+        for ($i = 0; $i <= ($notificationCount - 1); $i++) {
+            $this->assertEquals($notificationDataAsArray[$i]['recipient_id'], $resultAsArray[$i]['recipient_id']);
+            $this->assertEquals($notificationDataAsArray[$i]['content'], $resultAsArray[$i]['content']);
+            $this->assertEquals($notificationDataAsArray[$i]['category'], $resultAsArray[$i]['category']);
+            $this->assertEquals($notificationDataAsArray[$i]['created_at'], $resultAsArray[$i]['created_at']);
+            $this->assertEquals($notificationDataAsArray[$i]['updated_at'], $resultAsArray[$i]['updated_at']);
+        }
     }
 
     /**

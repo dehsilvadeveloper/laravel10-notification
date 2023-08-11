@@ -35,10 +35,18 @@ class BaseRepository implements EloquentRepositoryInterface
         return $this->model->get($columns);
     }
 
-    public function findAllPaginated(int $pageSize = 10, array $columns = ['*']): LengthAwarePaginator
-    {
-        $paginatedItems = $this->model->paginate($pageSize, $columns);
-        $paginatedItems->appends(['page_size' => $pageSize]);
+    public function findAllPaginated(
+        int $page = 1,
+        int $pageSize = 10,
+        array $columns = ['*']
+    ): LengthAwarePaginator {
+        $paginatedItems = $this->model->paginate(
+            $pageSize,
+            $columns,
+            'page',
+            $page
+        );
+        $paginatedItems->appends(['page' => $page, 'page_size' => $pageSize]);
 
         return $paginatedItems;
     }

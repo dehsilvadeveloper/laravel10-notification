@@ -11,7 +11,11 @@ interface EloquentRepositoryInterface
     public function create(array $data): Model;
     public function update(int $id, array $data): Model;
     public function findAll(array $columns = ['*']): Collection;
-    public function findAllPaginated(int $pageSize = 10, array $columns = ['*']): LengthAwarePaginator;
+    public function findAllPaginated(
+        int $page = 1,
+        int $pageSize = 10,
+        array $columns = ['*']
+    ): LengthAwarePaginator;
     public function findById(int $id, array $columns = ['*']): ?Model;
     public function deleteById(int $id): ?bool;
 }
