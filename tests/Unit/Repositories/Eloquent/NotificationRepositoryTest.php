@@ -2,6 +2,8 @@
 
 namespace Tests\Unit\Repositories\Eloquent;
 
+use App\DataTransferObjects\Notification\CreateNotificationDTO;
+use App\DataTransferObjects\Notification\UpdateNotificationDTO;
 use App\Enums\NotificationCategoryEnum;
 use App\Models\Notification;
 use App\Repositories\Interfaces\NotificationRepositoryInterface;
@@ -31,10 +33,12 @@ class NotificationRepositoryTest extends TestCase
         $data = [
             'recipient_id' => 1,
             'content' => fake()->sentence(),
-            'category' => fake()->randomElement(NotificationCategoryEnum::class)
+            'category' => fake()->randomElement(NotificationCategoryEnum::class)->value
         ];
 
-        $createdNotification = $this->notificationRepository->create($data);
+        $createdNotification = $this->notificationRepository->create(
+            CreateNotificationDTO::fromArray($data)
+        );
 
         $this->assertInstanceOf(Notification::class, $createdNotification);
         $this->assertDatabaseHas('notifications', $data);
@@ -52,14 +56,18 @@ class NotificationRepositoryTest extends TestCase
 
         $dataForUpdate = [
             'content' => 'Updated content',
-            'category' => NotificationCategoryEnum::PROFESSIONAL
+            'category' => NotificationCategoryEnum::PROFESSIONAL->value
         ];
 
-        $updatedNotification = $this->notificationRepository->update($existingNotification->id, $dataForUpdate);
+        $updatedNotification = $this->notificationRepository->update(
+            $existingNotification->id,
+            UpdateNotificationDTO::fromArray($dataForUpdate)
+        );
 
         $this->assertInstanceOf(Notification::class, $updatedNotification);
+        $this->assertEquals($existingNotification->recipient_id, $updatedNotification->recipient_id);
         $this->assertEquals($dataForUpdate['content'], $updatedNotification->content);
-        $this->assertEquals($dataForUpdate['category'], $updatedNotification->category);
+        $this->assertEquals(NotificationCategoryEnum::PROFESSIONAL, $updatedNotification->category);
     }
 
     /**

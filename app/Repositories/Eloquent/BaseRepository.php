@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\DataTransferObjects\Interfaces\DataTransferObjectInterface;
 use App\Repositories\Eloquent\Interfaces\EloquentRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -16,15 +17,19 @@ class BaseRepository implements EloquentRepositoryInterface
         $this->model = $model;
     }
 
-    public function create(array $data): Model
+    public function create(DataTransferObjectInterface $data): Model
     {
-        return $this->model->create($data);
+        $dataArray = $data->toArray();
+
+        return $this->model->create($dataArray);
     }
 
-    public function update(int $id, array $data): Model
+    public function update(int $id, DataTransferObjectInterface $data): Model
     {
+        $dataArray = $data->toArray();
+
         $item = $this->model->findOrFail($id);
-        $item->update($data);
+        $item->update($dataArray);
         $item->refresh();
 
         return $item;

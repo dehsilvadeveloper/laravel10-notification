@@ -2,14 +2,15 @@
 
 namespace App\Repositories\Interfaces;
 
+use App\DataTransferObjects\Interfaces\DataTransferObjectInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 interface NotificationRepositoryInterface
 {
-    public function create(array $data): Model;
-    public function update(int $id, array $data): Model;
+    public function create(DataTransferObjectInterface $data): Model;
+    public function update(int $id, DataTransferObjectInterface $data): Model;
     public function findAll(array $columns = ['*']): Collection;
     public function findAllPaginated(
         int $page = 1,

@@ -173,6 +173,7 @@ return [
          * Custom Service Providers...
          */
         App\Providers\RepositoryLayerServiceProvider::class,
+        App\Providers\DataTransferObjectServiceProvider::class,
     ])->toArray(),
 
     /*
