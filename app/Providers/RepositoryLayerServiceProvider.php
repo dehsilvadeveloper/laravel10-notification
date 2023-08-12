@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use App\Repositories\Eloquent\BaseRepository;
-use App\Repositories\Eloquent\Interfaces\EloquentRepositoryInterface;
 use App\Repositories\Eloquent\NotificationRepository;
+use App\Repositories\Interfaces\BaseRepositoryInterface;
 use App\Repositories\Interfaces\NotificationRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,7 +29,7 @@ class RepositoryLayerServiceProvider extends ServiceProvider
 
     private function registerBaseRepositories(): void
     {
-        $this->app->bind(EloquentRepositoryInterface::class, BaseRepository::class);
+        $this->app->bind(BaseRepositoryInterface::class, BaseRepository::class);
     }
 
     private function registerNotificationRepositories(): void

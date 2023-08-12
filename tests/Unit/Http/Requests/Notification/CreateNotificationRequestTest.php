@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Http\Requests;
+namespace Tests\Unit\Http\Requests\Notification;
 
 use App\Enums\NotificationCategoryEnum;
 use App\Http\Requests\Notification\CreateNotificationRequest;

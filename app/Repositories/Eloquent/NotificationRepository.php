@@ -2,6 +2,8 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\DataTransferObjects\Notification\CreateNotificationDTO;
+use App\DataTransferObjects\Notification\UpdateNotificationDTO;
 use App\Models\Notification;
 use App\Repositories\Interfaces\NotificationRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -10,7 +12,30 @@ class NotificationRepository extends BaseRepository implements NotificationRepos
 {
     public function __construct(Notification $model)
     {
-        parent::__construct($model);
+        $this->model = $model;
+    }
+
+    public function create(CreateNotificationDTO $data): Notification
+    {
+        $dataArray = $data->toArray();
+
+        return $this->model->create($dataArray);
+    }
+
+    public function update(int $id, UpdateNotificationDTO $data): Notification
+    {
+        $dataArray = $data->toArray();
+
+        $item = $this->model->findOrFail($id);
+        $item->update($dataArray);
+        $item->refresh();
+
+        return $item;
+    }
+
+    public function findById(int $id, array $columns = ['*']): ?Notification
+    {
+        return $this->model->find($id, $columns);
     }
 
     public function findManyByRecipientId(int $recipientId, array $columns = ['*']): Collection

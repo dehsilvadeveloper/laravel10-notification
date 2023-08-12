@@ -3,11 +3,10 @@
 namespace App\DataTransferObjects\Notification;
 
 use App\DataTransferObjects\BaseDataTransferObject;
-use App\DataTransferObjects\Interfaces\DataTransferObjectInterface;
 use App\Enums\NotificationCategoryEnum;
 use Illuminate\Http\Request;
 
-class UpdateNotificationDTO extends BaseDataTransferObject implements DataTransferObjectInterface
+class UpdateNotificationDTO extends BaseDataTransferObject
 {
     public function __construct(
         public readonly ?int $recipientId,
