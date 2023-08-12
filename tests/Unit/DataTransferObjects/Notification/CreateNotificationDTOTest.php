@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\DataTransferObjects;
+namespace Tests\Unit\DataTransferObjects\Notification;
 
 use App\DataTransferObjects\Notification\CreateNotificationDTO;
 use App\Enums\NotificationCategoryEnum;
@@ -60,7 +60,7 @@ class CreateNotificationDTOTest extends TestCase
     /**
      * @group NotificationDTO
      */
-    public function test_should_throw_exception_if_creating_from_empty_array(): void
+    public function test_should_fail_if_creating_from_empty_array(): void
     {
         $this->expectException(TypeError::class);
 
@@ -70,7 +70,7 @@ class CreateNotificationDTOTest extends TestCase
     /**
      * @group NotificationDTO
      */
-    public function test_should_throw_exception_if_creating_from_empty_request(): void
+    public function test_should_fail_if_creating_from_empty_request(): void
     {
         $this->expectException(TypeError::class);
 

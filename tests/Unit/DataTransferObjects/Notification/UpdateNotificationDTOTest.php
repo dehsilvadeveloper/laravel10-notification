@@ -1,13 +1,12 @@
 <?php
 
-namespace Tests\Unit\DataTransferObjects;
+namespace Tests\Unit\DataTransferObjects\Notification;
 
 use App\DataTransferObjects\Notification\UpdateNotificationDTO;
 use App\Enums\NotificationCategoryEnum;
 use App\Exceptions\EmptyDTOException;
 use Illuminate\Http\Request;
 use Tests\TestCase;
-use TypeError;
 
 class UpdateNotificationDTOTest extends TestCase
 {
@@ -61,7 +60,7 @@ class UpdateNotificationDTOTest extends TestCase
     /**
      * @group NotificationDTO
      */
-    public function test_should_throw_exception_if_creating_from_empty_array(): void
+    public function test_should_fail_if_creating_from_empty_array(): void
     {
         $this->expectException(EmptyDTOException::class);
         $this->expectExceptionMessage('The DTO has no properties to convert to array.');
@@ -73,7 +72,7 @@ class UpdateNotificationDTOTest extends TestCase
     /**
      * @group NotificationDTO
      */
-    public function test_should_throw_exception_if_creating_from_empty_request(): void
+    public function test_should_fail_if_creating_from_empty_request(): void
     {
         $this->expectException(EmptyDTOException::class);
         $this->expectExceptionMessage('The DTO has no properties to convert to array.');

@@ -18,10 +18,10 @@ class UpdateNotificationDTO extends BaseDataTransferObject implements DataTransf
     public static function fromRequest(Request $request): self
     {
         return new self(
-            recipientId: $request->validated('recipient_id'),
-            content: $request->validated('content'),
+            recipientId: $request->input('recipient_id'),
+            content: $request->input('content'),
             category: $request->filled('category')
-                ? NotificationCategoryEnum::from($request->validated('category'))
+                ? NotificationCategoryEnum::from($request->input('category'))
                 : null
         );
     }
