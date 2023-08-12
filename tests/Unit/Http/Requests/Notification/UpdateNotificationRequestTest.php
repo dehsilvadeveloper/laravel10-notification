@@ -3,11 +3,11 @@
 namespace Tests\Unit\Http\Requests;
 
 use App\Enums\NotificationCategoryEnum;
-use App\Http\Requests\Notification\CreateNotificationRequest;
+use App\Http\Requests\Notification\UpdateNotificationRequest;
 use Illuminate\Support\Facades\Validator;
 use Tests\TestCase;
 
-class CreateNotificationRequestTest extends TestCase
+class UpdateNotificationRequestTest extends TestCase
 {
     protected function setUp(): void
     {
@@ -22,10 +22,10 @@ class CreateNotificationRequestTest extends TestCase
         $data = [
             'recipient_id' => 1,
             'content' => fake()->sentence(),
-            'category' => NotificationCategoryEnum::SOCIAL->value
+            'category' => NotificationCategoryEnum::SOCIAL->value,
         ];
 
-        $request = (new CreateNotificationRequest())->replace($data);
+        $request = (new UpdateNotificationRequest())->replace($data);
         $validator = Validator::make($data, $request->rules());
 
         $this->assertFalse($validator->fails());
@@ -34,15 +34,14 @@ class CreateNotificationRequestTest extends TestCase
     /**
      * @group NotificationFormRequest
      */
-    public function test_missing_required_fields_fail(): void
+    public function test_nullable_fields_pass(): void
     {
         $data = [];
 
-        $request = (new CreateNotificationRequest())->replace($data);
+        $request = (new UpdateNotificationRequest())->replace($data);
         $validator = Validator::make($data, $request->rules());
 
-        $this->assertTrue($validator->fails());
-        $this->assertCount(3, $validator->errors());
+        $this->assertFalse($validator->fails());
     }
 
     /**
@@ -56,7 +55,7 @@ class CreateNotificationRequestTest extends TestCase
             'category' => NotificationCategoryEnum::SOCIAL->value,
         ];
 
-        $request = (new CreateNotificationRequest())->replace($data);
+        $request = (new UpdateNotificationRequest())->replace($data);
         $validator = Validator::make($data, $request->rules());
 
         $this->assertTrue($validator->fails());
@@ -85,7 +84,7 @@ class CreateNotificationRequestTest extends TestCase
             'category' => NotificationCategoryEnum::SOCIAL->value,
         ];
 
-        $request = (new CreateNotificationRequest())->replace($data);
+        $request = (new UpdateNotificationRequest())->replace($data);
         $validator = Validator::make($data, $request->rules());
 
         $this->assertTrue($validator->fails());
@@ -108,7 +107,7 @@ class CreateNotificationRequestTest extends TestCase
             'category' => NotificationCategoryEnum::SOCIAL->value,
         ];
 
-        $request = (new CreateNotificationRequest())->replace($data);
+        $request = (new UpdateNotificationRequest())->replace($data);
         $validator = Validator::make($data, $request->rules());
 
         $this->assertTrue($validator->fails());
@@ -131,7 +130,7 @@ class CreateNotificationRequestTest extends TestCase
             'category' => 'invalid_category',
         ];
 
-        $request = (new CreateNotificationRequest())->replace($data);
+        $request = (new UpdateNotificationRequest())->replace($data);
         $validator = Validator::make($data, $request->rules());
 
         $this->assertTrue($validator->fails());
