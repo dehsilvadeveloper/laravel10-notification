@@ -2,10 +2,10 @@
 
 namespace App\DataTransferObjects\Notification;
 
-use Illuminate\Http\Request;
 use App\DataTransferObjects\BaseDataTransferObject;
 use App\DataTransferObjects\Interfaces\DataTransferObjectInterface;
 use App\Enums\NotificationCategoryEnum;
+use Illuminate\Http\Request;
 
 class UpdateNotificationDTO extends BaseDataTransferObject implements DataTransferObjectInterface
 {
@@ -18,10 +18,10 @@ class UpdateNotificationDTO extends BaseDataTransferObject implements DataTransf
     public static function fromRequest(Request $request): self
     {
         return new self(
-            recipientId: $request->input('recipient_id'),
-            content: $request->input('content'),
+            recipientId: $request->validated('recipient_id'),
+            content: $request->validated('content'),
             category: $request->filled('category')
-                ? NotificationCategoryEnum::from($request->input('category'))
+                ? NotificationCategoryEnum::from($request->validated('category'))
                 : null
         );
     }
@@ -31,7 +31,9 @@ class UpdateNotificationDTO extends BaseDataTransferObject implements DataTransf
         return new self(
             recipientId: $data['recipient_id'] ?? null,
             content: $data['content'] ?? null,
-            category: isset($data['category']) ? NotificationCategoryEnum::from($data['category']) : null
+            category: isset($data['category'])
+                ? NotificationCategoryEnum::from($data['category'])
+                : null
         );
     }
 }
