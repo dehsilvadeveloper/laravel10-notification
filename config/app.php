@@ -172,6 +172,7 @@ return [
         /*
          * Custom Service Providers...
          */
+        App\Providers\ServiceLayerServiceProvider::class,
         App\Providers\RepositoryLayerServiceProvider::class,
     ])->toArray(),
 

@@ -33,6 +33,39 @@ class NotificationRepository extends BaseRepository implements NotificationRepos
         return $item;
     }
 
+    public function read(int $id): Notification
+    {
+        $item = $this->model->findOrFail($id);
+        $item->update([
+            'read_at' => date('Y-m-d H:i:s')
+        ]);
+        $item->refresh();
+
+        return $item;
+    }
+
+    public function unread(int $id): Notification
+    {
+        $item = $this->model->findOrFail($id);
+        $item->update([
+            'read_at' => null
+        ]);
+        $item->refresh();
+
+        return $item;
+    }
+
+    public function cancel(int $id): Notification
+    {
+        $item = $this->model->findOrFail($id);
+        $item->update([
+            'canceled_at' => date('Y-m-d H:i:s')
+        ]);
+        $item->refresh();
+
+        return $item;
+    }
+
     public function findById(int $id, array $columns = ['*']): ?Notification
     {
         return $this->model->find($id, $columns);
