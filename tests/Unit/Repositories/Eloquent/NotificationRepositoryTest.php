@@ -77,21 +77,30 @@ class NotificationRepositoryTest extends TestCase
     {
         $notificationCount = 3;
 
-        $notificationData = Notification::factory()->count($notificationCount)->create();
-        $notificationDataAsArray = $notificationData->toArray();
+        $generatedNotifications = Notification::factory()->count($notificationCount)->create();
+        $generatedNotificationsAsArray = $generatedNotifications->toArray();
 
-        $result = $this->notificationRepository->findAll();
-        $resultAsArray = $result->toArray();
+        $notifications = $this->notificationRepository->findAll();
+        $notificationsAsArray = $notifications->toArray();
 
-        $this->assertCount($notificationCount, $result);
+        $this->assertCount($notificationCount, $notifications);
 
         for ($i = 0; $i <= ($notificationCount - 1); $i++) {
-            $this->assertEquals($notificationDataAsArray[$i]['recipient_id'], $resultAsArray[$i]['recipient_id']);
-            $this->assertEquals($notificationDataAsArray[$i]['content'], $resultAsArray[$i]['content']);
-            $this->assertEquals($notificationDataAsArray[$i]['category'], $resultAsArray[$i]['category']);
-            $this->assertEquals($notificationDataAsArray[$i]['created_at'], $resultAsArray[$i]['created_at']);
-            $this->assertEquals($notificationDataAsArray[$i]['updated_at'], $resultAsArray[$i]['updated_at']);
+            $this->assertEquals($generatedNotificationsAsArray[$i]['recipient_id'], $notificationsAsArray[$i]['recipient_id']);
+            $this->assertEquals($generatedNotificationsAsArray[$i]['content'], $notificationsAsArray[$i]['content']);
+            $this->assertEquals($generatedNotificationsAsArray[$i]['category'], $notificationsAsArray[$i]['category']);
+            $this->assertEquals($generatedNotificationsAsArray[$i]['created_at'], $notificationsAsArray[$i]['created_at']);
+            $this->assertEquals($generatedNotificationsAsArray[$i]['updated_at'], $notificationsAsArray[$i]['updated_at']);
         }
+    }
+
+    /**
+     * @group NotificationRepository
+     */
+    public function test_should_get_empty_list_if_table_is_empty(): void
+    {
+        $notifications = $this->notificationRepository->findAll();
+        $this->assertCount(0, $notifications);
     }
 
     /**
@@ -103,21 +112,38 @@ class NotificationRepositoryTest extends TestCase
         $pageSize = 10;
         $page = 2;
 
-        $notificationData = Notification::factory()->count($notificationCount)->create();
-        $notificationDataAsArray = $notificationData->toArray();
+        $generatedNotifications = Notification::factory()->count($notificationCount)->create();
+        $generatedNotificationsAsArray = $generatedNotifications->toArray();
 
-        $result = $this->notificationRepository->findAllPaginated($page, $pageSize);
-        $resultAsArray = $result->toArray();
+        $notifications = $this->notificationRepository->findAllPaginated($page, $pageSize);
+        $notificationsAsArray = $notifications->toArray();
 
-        $this->assertInstanceOf(LengthAwarePaginator::class, $result);
-        $this->assertEquals($notificationCount, $resultAsArray['total']);
-        $this->assertEquals($pageSize, $resultAsArray['per_page']);
-        $this->assertEquals($page, $resultAsArray['current_page']);
-        $this->assertEquals($notificationDataAsArray[10]['recipient_id'], $resultAsArray['data'][0]['recipient_id']);
-        $this->assertEquals($notificationDataAsArray[10]['content'], $resultAsArray['data'][0]['content']);
-        $this->assertEquals($notificationDataAsArray[10]['category'], $resultAsArray['data'][0]['category']);
-        $this->assertEquals($notificationDataAsArray[10]['created_at'], $resultAsArray['data'][0]['created_at']);
-        $this->assertEquals($notificationDataAsArray[10]['updated_at'], $resultAsArray['data'][0]['updated_at']);
+        $this->assertInstanceOf(LengthAwarePaginator::class, $notifications);
+        $this->assertEquals($notificationCount, $notificationsAsArray['total']);
+        $this->assertEquals($pageSize, $notificationsAsArray['per_page']);
+        $this->assertEquals($page, $notificationsAsArray['current_page']);
+        $this->assertEquals($generatedNotificationsAsArray[10]['recipient_id'], $notificationsAsArray['data'][0]['recipient_id']);
+        $this->assertEquals($generatedNotificationsAsArray[10]['content'], $notificationsAsArray['data'][0]['content']);
+        $this->assertEquals($generatedNotificationsAsArray[10]['category'], $notificationsAsArray['data'][0]['category']);
+        $this->assertEquals($generatedNotificationsAsArray[10]['created_at'], $notificationsAsArray['data'][0]['created_at']);
+        $this->assertEquals($generatedNotificationsAsArray[10]['updated_at'], $notificationsAsArray['data'][0]['updated_at']);
+    }
+
+    /**
+     * @group NotificationRepository
+     */
+    public function test_should_get_empty_paginated_list_if_table_is_empty(): void
+    {
+        $pageSize = 10;
+        $page = 1;
+
+        $notifications = $this->notificationRepository->findAllPaginated($page, $pageSize);
+        $notificationsAsArray = $notifications->toArray();
+
+        $this->assertEquals(0, $notificationsAsArray['total']);
+        $this->assertEquals($pageSize, $notificationsAsArray['per_page']);
+        $this->assertEquals($page, $notificationsAsArray['current_page']);
+        $this->assertEmpty($notificationsAsArray['data']);
     }
 
     /**

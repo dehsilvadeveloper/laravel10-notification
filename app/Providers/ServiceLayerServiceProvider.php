@@ -3,10 +3,14 @@
 namespace App\Providers;
 
 use App\Services\Interfaces\Notification\CancelNotificationServiceInterface;
+use App\Services\Interfaces\Notification\GetNotificationListServiceInterface;
+use App\Services\Interfaces\Notification\GetNotificationPaginatedListServiceInterface;
 use App\Services\Interfaces\Notification\ReadNotificationServiceInterface;
 use App\Services\Interfaces\Notification\SendNotificationServiceInterface;
 use App\Services\Interfaces\Notification\UnreadNotificationServiceInterface;
 use App\Services\Notification\CancelNotificationService;
+use App\Services\Notification\GetNotificationListService;
+use App\Services\Notification\GetNotificationPaginatedListService;
 use App\Services\Notification\ReadNotificationService;
 use App\Services\Notification\SendNotificationService;
 use App\Services\Notification\UnreadNotificationService;
@@ -33,6 +37,8 @@ class ServiceLayerServiceProvider extends ServiceProvider
     private function registerNotificationServices(): void
     {
         $this->app->bind(CancelNotificationServiceInterface::class, CancelNotificationService::class);
+        $this->app->bind(GetNotificationListServiceInterface::class, GetNotificationListService::class);
+        $this->app->bind(GetNotificationPaginatedListServiceInterface::class, GetNotificationPaginatedListService::class);
         $this->app->bind(ReadNotificationServiceInterface::class, ReadNotificationService::class);
         $this->app->bind(SendNotificationServiceInterface::class, SendNotificationService::class);
         $this->app->bind(UnreadNotificationServiceInterface::class, UnreadNotificationService::class);
