@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CancelNotificationController;
 use App\Http\Controllers\Api\GetNotificationController;
 use App\Http\Controllers\Api\GetNotificationListController;
+use App\Http\Controllers\Api\GetRecipientNotificationListController;
 use App\Http\Controllers\Api\ReadNotificationController;
 use App\Http\Controllers\Api\SendNotificationController;
 use App\Http\Controllers\Api\UnreadNotificationController;
@@ -49,4 +50,11 @@ Route::prefix('notification')->group(function () {
         '/{id}/unread',
         [UnreadNotificationController::class, 'unread']
     )->where(['id' => '[0-9]+'])->name('notification::unread');
+
+    Route::prefix('recipient')->group(function () {
+        Route::get(
+            '/{recipientId}',
+            [GetRecipientNotificationListController::class, 'getListByRecipient']
+        )->where(['recipientId' => '[0-9]+'])->name('notification::recipient::list-by-recipient');
+    });
 });

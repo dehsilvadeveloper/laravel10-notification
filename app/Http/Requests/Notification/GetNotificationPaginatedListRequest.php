@@ -23,7 +23,7 @@ class GetNotificationPaginatedListRequest extends FormRequest
     {
         return [
             'page' => ['nullable', 'integer', 'gt:0'],
-            'page_size' => ['nullable', 'integer', 'gt:0']
+            'page_size' => ['nullable', 'integer', 'between:1,100']
         ];
     }
 }
