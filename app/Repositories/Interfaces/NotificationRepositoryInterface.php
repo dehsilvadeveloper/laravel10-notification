@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface NotificationRepositoryInterface extends BaseRepositoryInterface
 {
-    public function create(CreateNotificationDTO $data): Notification;
-    public function update(int $id, UpdateNotificationDTO $data): Notification;
+    public function create(CreateNotificationDTO $dto): Notification;
+    public function update(int $id, UpdateNotificationDTO $dto): Notification;
     public function read(int $id): Notification;
     public function unread(int $id): Notification;
     public function cancel(int $id): Notification;

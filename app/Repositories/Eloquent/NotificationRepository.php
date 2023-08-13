@@ -15,16 +15,16 @@ class NotificationRepository extends BaseRepository implements NotificationRepos
         $this->model = $model;
     }
 
-    public function create(CreateNotificationDTO $data): Notification
+    public function create(CreateNotificationDTO $dto): Notification
     {
-        $dataArray = $data->toArray();
+        $dataArray = $dto->toArray();
 
         return $this->model->create($dataArray);
     }
 
-    public function update(int $id, UpdateNotificationDTO $data): Notification
+    public function update(int $id, UpdateNotificationDTO $dto): Notification
     {
-        $dataArray = $data->toArray();
+        $dataArray = $dto->toArray();
 
         $item = $this->model->findOrFail($id);
         $item->update($dataArray);
