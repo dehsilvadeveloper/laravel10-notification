@@ -30,6 +30,6 @@ The project was created for learn/check features of **Laravel 10**. It also work
 
 ## Docs
 
-* [Getting Started](./docs/getting_started.md)
-* [CORS](./docs/cors.md)
-* [Available Make Scripts](./docs/available_make_scripts.md)
+* [Getting Started](./docs/getting_started.md) (WIP)
+* [CORS](./docs/cors.md) (WIP)
+* [Available Make Scripts](./docs/available_make_scripts.md) (WIP)
