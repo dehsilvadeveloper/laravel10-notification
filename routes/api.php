@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\CancelNotificationController;
 use App\Http\Controllers\Api\ReadNotificationController;
 use App\Http\Controllers\Api\SendNotificationController;
+use App\Http\Controllers\Api\UnreadNotificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,4 +38,8 @@ Route::prefix('notification')->group(function () {
         '/{id}/read',
         [ReadNotificationController::class, 'read']
     )->where(['id' => '[0-9]+'])->name('notification::read');
+    Route::patch(
+        '/{id}/unread',
+        [UnreadNotificationController::class, 'unread']
+    )->where(['id' => '[0-9]+'])->name('notification::unread');
 });
