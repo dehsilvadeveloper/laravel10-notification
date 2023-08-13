@@ -13,9 +13,12 @@ class GetNotificationPaginatedListService implements GetNotificationPaginatedLis
         private NotificationRepositoryInterface $notificationRepository
     ) {}
 
-    public function execute(int $page, int $pageSize): LengthAwarePaginator
+    public function execute(?int $page = null, ?int $pageSize = null): LengthAwarePaginator
     {
         try {
+            $page = $page ?? config('notifications.pagination.default_page');
+            $pageSize = $pageSize ?? config('notifications.pagination.default_page_size');
+
             return $this->notificationRepository->findAllPaginated($page, $pageSize);
         } catch (Throwable $exception) {
             throw $exception;

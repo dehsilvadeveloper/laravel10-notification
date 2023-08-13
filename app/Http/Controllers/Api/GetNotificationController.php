@@ -36,7 +36,7 @@ class GetNotificationController extends Controller
             );
         } catch (Throwable $exception) {
             return $this->sendErrorResponse(
-                message: 'An error has occurred. Could get the notification data as requested.',
+                message: 'An error has occurred. Could not get the notification data as requested.',
                 code: $exception->getCode(),
                 data: [
                     'id' => $id
