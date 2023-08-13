@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CancelNotificationController;
 use App\Http\Controllers\Api\SendNotificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,5 +27,9 @@ Route::get('/', function () {
 });
 
 Route::prefix('notification')->group(function () {
-    Route::post('/', [SendNotificationController::class, 'send']);
+    Route::post('/', [SendNotificationController::class, 'send'])->name('notification::send');
+    Route::patch(
+        '/{id}/cancel',
+        [CancelNotificationController::class, 'cancel']
+    )->where(['id' => '[0-9]+'])->name('notification::cancel');
 });
