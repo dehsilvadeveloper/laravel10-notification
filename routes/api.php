@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\CancelNotificationController;
+use App\Http\Controllers\Api\GetNotificationController;
 use App\Http\Controllers\Api\ReadNotificationController;
 use App\Http\Controllers\Api\SendNotificationController;
 use App\Http\Controllers\Api\UnreadNotificationController;
@@ -30,6 +31,10 @@ Route::get('/', function () {
 
 Route::prefix('notification')->group(function () {
     Route::post('/', [SendNotificationController::class, 'send'])->name('notification::send');
+    Route::get(
+        '/{id}',
+        [GetNotificationController::class, 'getNotification']
+    )->where(['id' => '[0-9]+'])->name('notification::get');
     Route::patch(
         '/{id}/cancel',
         [CancelNotificationController::class, 'cancel']
