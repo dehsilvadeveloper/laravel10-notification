@@ -167,6 +167,18 @@ class NotificationRepositoryTest extends TestCase
     /**
      * @group NotificationRepository
      */
+    public function test_should_fail_to_get_non_existing_notification(): void
+    {
+        $latestNotification = Notification::orderBy('id', 'DESC')->first();
+        $nonExistentId = $latestNotification ? ($latestNotification->id + 1) : 1;
+
+        $notification = $this->notificationRepository->findById($nonExistentId);
+        $this->assertNull($notification);
+    }
+
+    /**
+     * @group NotificationRepository
+     */
     public function test_should_delete_by_id(): void
     {
         $notification = Notification::factory()->create();
