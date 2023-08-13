@@ -22,7 +22,7 @@ The project was created for learn/check features of **Laravel 10**. It also work
 ## Objectives
 
 - Use concepts of single action controllers
-- Use concepts of service pattern
+- Use concepts of service pattern, with short service classes
 - Use concepts of repository pattern
 - Use Data Transfer Objects (DTOs) to transport groups of data between the application layers
 - Use Form-Request classes to validate input data

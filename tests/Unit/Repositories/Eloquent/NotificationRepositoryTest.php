@@ -97,7 +97,7 @@ class NotificationRepositoryTest extends TestCase
     /**
      * @group NotificationRepository
      */
-    public function test_should_get_empty_list_if_table_is_empty(): void
+    public function test_should_get_empty_list_if_data_not_exists(): void
     {
         $notifications = $this->notificationRepository->findAll();
         $this->assertCount(0, $notifications);
@@ -132,7 +132,7 @@ class NotificationRepositoryTest extends TestCase
     /**
      * @group NotificationRepository
      */
-    public function test_should_get_empty_paginated_list_if_table_is_empty(): void
+    public function test_should_get_empty_paginated_list_if_data_not_exists(): void
     {
         $pageSize = 10;
         $page = 1;
@@ -184,7 +184,7 @@ class NotificationRepositoryTest extends TestCase
         $notificationCount = 5;
         $recipientId = 7;
 
-        $notificationData = Notification::factory()
+        $generatedNotifications = Notification::factory()
             ->count($notificationCount)
             ->create([
                 'recipient_id' => $recipientId
@@ -195,18 +195,31 @@ class NotificationRepositoryTest extends TestCase
                 'recipient_id' => ($recipientId + 1)
             ]);
 
-        $notificationDataAsArray = $notificationData->toArray();
+        $generatedNotificationsAsArray = $generatedNotifications->toArray();
 
-        $result = $this->notificationRepository->findManyByRecipientId($recipientId);
-        $resultAsArray = $result->toArray();
+        $notifications = $this->notificationRepository->findManyByRecipientId($recipientId);
+        $notificationsAsArray = $notifications->toArray();
+
+        $this->assertCount($notificationCount, $notifications);
 
         for ($i = 0; $i <= ($notificationCount - 1); $i++) {
-            $this->assertEquals($notificationDataAsArray[$i]['recipient_id'], $resultAsArray[$i]['recipient_id']);
-            $this->assertEquals($notificationDataAsArray[$i]['content'], $resultAsArray[$i]['content']);
-            $this->assertEquals($notificationDataAsArray[$i]['category'], $resultAsArray[$i]['category']);
-            $this->assertEquals($notificationDataAsArray[$i]['created_at'], $resultAsArray[$i]['created_at']);
-            $this->assertEquals($notificationDataAsArray[$i]['updated_at'], $resultAsArray[$i]['updated_at']);
+            $this->assertEquals($generatedNotificationsAsArray[$i]['recipient_id'], $notificationsAsArray[$i]['recipient_id']);
+            $this->assertEquals($generatedNotificationsAsArray[$i]['content'], $notificationsAsArray[$i]['content']);
+            $this->assertEquals($generatedNotificationsAsArray[$i]['category'], $notificationsAsArray[$i]['category']);
+            $this->assertEquals($generatedNotificationsAsArray[$i]['created_at'], $notificationsAsArray[$i]['created_at']);
+            $this->assertEquals($generatedNotificationsAsArray[$i]['updated_at'], $notificationsAsArray[$i]['updated_at']);
         }
+    }
+
+    /**
+     * @group NotificationRepository
+     */
+    public function test_should_get_empty_list_by_recipient_id_if_data_not_exists(): void
+    {
+        $recipientId = 99;
+
+        $notifications = $this->notificationRepository->findManyByRecipientId($recipientId);
+        $this->assertCount(0, $notifications);
     }
 
     /**
@@ -231,5 +244,16 @@ class NotificationRepositoryTest extends TestCase
         $result = $this->notificationRepository->countByRecipientId($recipientId);
 
         $this->assertEquals($notificationCount, $result);
+    }
+
+    /**
+     * @group NotificationRepository
+     */
+    public function test_should_count_zero_by_recipient_id_if_data_not_exists(): void
+    {
+        $recipientId = 99;
+
+        $result = $this->notificationRepository->countByRecipientId($recipientId);
+        $this->assertEquals(0, $result);
     }
 }
