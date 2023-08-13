@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Services\Interfaces\Notification\GetRecipientNotificationCountServiceInterface;
 use App\Traits\Http\HttpResponses;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
+use Throwable;
 
-class GetRecipientNotificationCountSController extends Controller
+class GetRecipientNotificationCountController extends Controller
 {
     use HttpResponses;
     
@@ -16,8 +16,22 @@ class GetRecipientNotificationCountSController extends Controller
         protected GetRecipientNotificationCountServiceInterface $getRecipientNotificationCountService
     ) {}
 
-    public function getCount(int $recipientId): void
+    public function getCountByRecipient(int $recipientId): JsonResponse
     {
-        //
+        try {
+            $notificationsCount = $this->getRecipientNotificationCountService->execute($recipientId);
+
+            return response()->json([
+                'notifications_count' => $notificationsCount
+            ]);
+        } catch (Throwable $exception) {
+            return $this->sendErrorResponse(
+                message: 'An error has occurred. Could not get the notifications count by recipient as requested.',
+                code: $exception->getCode(),
+                data: [
+                    'recipient_id' => $recipientId
+                ]
+            );
+        }
     }
 }
