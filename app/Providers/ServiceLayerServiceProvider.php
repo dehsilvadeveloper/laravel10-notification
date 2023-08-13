@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Services\Interfaces\Notification\CancelNotificationServiceInterface;
+use App\Services\Interfaces\Notification\ReadNotificationServiceInterface;
 use App\Services\Notification\CancelNotificationService;
+use App\Services\Notification\ReadNotificationService;
 use Illuminate\Support\ServiceProvider;
 
 class ServiceLayerServiceProvider extends ServiceProvider
@@ -27,5 +29,6 @@ class ServiceLayerServiceProvider extends ServiceProvider
     private function registerNotificationServices(): void
     {
         $this->app->bind(CancelNotificationServiceInterface::class, CancelNotificationService::class);
+        $this->app->bind(ReadNotificationServiceInterface::class, ReadNotificationService::class);
     }
 }
