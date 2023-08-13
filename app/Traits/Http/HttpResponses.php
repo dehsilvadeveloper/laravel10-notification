@@ -7,16 +7,10 @@ use Illuminate\Http\Response;
 
 trait HttpResponses
 {
-    /**
-     * @param $data
-     * @param string|null $message
-     * @param int $code
-     * @return JsonResponse
-     */
     protected function sendErrorResponse(
         string $message,
-        array $data = [],
-        ?int $code = null
+        ?int $code = null,
+        array $data = []
     ): JsonResponse {
         if (!array_key_exists($code, Response::$statusTexts)) {
             $code = Response::HTTP_BAD_REQUEST;

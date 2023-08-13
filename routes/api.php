@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\SendNotificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,8 @@ Route::get('/', function () {
     return response()->json([
         'success' => true
     ]);
+});
+
+Route::prefix('notification')->group(function () {
+    Route::post('/', [SendNotificationController::class, 'send']);
 });
