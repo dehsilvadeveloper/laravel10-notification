@@ -10,6 +10,11 @@ use App\Traits\Http\HttpResponses;
 use Illuminate\Http\JsonResponse;
 use Throwable;
 
+/**
+ * @group Notifications
+ *
+ * Endpoints for managing notifications
+ */
 class UnreadNotificationController extends Controller
 {
     use HttpResponses;
@@ -18,6 +23,12 @@ class UnreadNotificationController extends Controller
         protected UnreadNotificationServiceInterface $unreadNotificationService
     ) {}
 
+    /**
+     * Unread a notification
+     * 
+     * This endpoint is used to mark a single notification as UNREAD.
+     * 
+     */
     public function unread(int $id): JsonResponse
     {
         try {

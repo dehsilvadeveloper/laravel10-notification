@@ -1,0 +1,513 @@
+openapi: 3.0.3
+info:
+  title: laravel10-notification
+  description: 'This is a Laravel v10.x application to control notifications using a Dockerized environment.'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/notification:
+    post:
+      summary: ''
+      operationId: postApiNotification
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                recipient_id:
+                  type: integer
+                  description: ''
+                  example: 11
+                content:
+                  type: string
+                  description: 'Must be at least 3 characters.'
+                  example: eqkhjixweyvvovekuelv
+                category:
+                  type: string
+                  description: 'Must be one of <code>social</code> or <code>professional</code>.'
+                  example: social
+              required:
+                - recipient_id
+                - content
+                - category
+      security: []
+    get:
+      summary: 'Get a paginated list of notifications'
+      operationId: getAPaginatedListOfNotifications
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      content: 'New test notification 73'
+                      category: social
+                      read_at: '2023-08-13 15:22:47'
+                      canceled_at: '2023-08-13 15:18:04'
+                      created_at: '2023-08-13 17:09:53'
+                      updated_at: '2023-08-13 15:22:47'
+                    -
+                      id: 2
+                      content: 'New test notification 418'
+                      category: social
+                      read_at: null
+                      canceled_at: '2023-08-13 18:02:33'
+                      created_at: '2023-08-13 17:11:17'
+                      updated_at: '2023-08-13 15:27:35'
+                    -
+                      id: 3
+                      content: 'New test notification 707'
+                      category: social
+                      read_at: null
+                      canceled_at: null
+                      created_at: '2023-08-13 17:12:32'
+                      updated_at: '2023-08-13 17:12:32'
+                    -
+                      id: 4
+                      content: 'New test notification 30'
+                      category: social
+                      read_at: null
+                      canceled_at: null
+                      created_at: '2023-08-13 17:18:50'
+                      updated_at: '2023-08-13 17:18:50'
+                    -
+                      id: 5
+                      content: 'New test notification 53'
+                      category: social
+                      read_at: null
+                      canceled_at: null
+                      created_at: '2023-08-13 17:21:26'
+                      updated_at: '2023-08-13 17:21:26'
+                    -
+                      id: 6
+                      content: 'New test notification 289'
+                      category: social
+                      read_at: null
+                      canceled_at: null
+                      created_at: '2023-08-13 17:24:25'
+                      updated_at: '2023-08-13 17:24:25'
+                    -
+                      id: 7
+                      content: 'New test notification 223'
+                      category: social
+                      read_at: null
+                      canceled_at: null
+                      created_at: '2023-08-13 17:26:09'
+                      updated_at: '2023-08-13 17:26:09'
+                    -
+                      id: 8
+                      content: 'New test notification 43'
+                      category: social
+                      read_at: null
+                      canceled_at: null
+                      created_at: '2023-08-13 17:26:26'
+                      updated_at: '2023-08-13 17:26:26'
+                    -
+                      id: 9
+                      content: 'New test notification 148'
+                      category: social
+                      read_at: null
+                      canceled_at: null
+                      created_at: '2023-08-13 17:26:56'
+                      updated_at: '2023-08-13 17:26:56'
+                    -
+                      id: 10
+                      content: 'New test notification 671'
+                      category: social
+                      read_at: null
+                      canceled_at: null
+                      created_at: '2023-08-13 17:27:03'
+                      updated_at: '2023-08-13 17:27:03'
+                  current_page: 1
+                  last_page: 2
+                  per_page: 10
+                  from: 1
+                  to: 10
+                  total: 11
+                  path: 'http://localhost/api/notification'
+                  first_page_url: 'http://localhost/api/notification?page_size=10&page=1'
+                  prev_page_url: null
+                  next_page_url: 'http://localhost/api/notification?page_size=10&page=2'
+                  last_page_url: 'http://localhost/api/notification?page_size=10&page=2'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        content: 'New test notification 73'
+                        category: social
+                        read_at: '2023-08-13 15:22:47'
+                        canceled_at: '2023-08-13 15:18:04'
+                        created_at: '2023-08-13 17:09:53'
+                        updated_at: '2023-08-13 15:22:47'
+                      -
+                        id: 2
+                        content: 'New test notification 418'
+                        category: social
+                        read_at: null
+                        canceled_at: '2023-08-13 18:02:33'
+                        created_at: '2023-08-13 17:11:17'
+                        updated_at: '2023-08-13 15:27:35'
+                      -
+                        id: 3
+                        content: 'New test notification 707'
+                        category: social
+                        read_at: null
+                        canceled_at: null
+                        created_at: '2023-08-13 17:12:32'
+                        updated_at: '2023-08-13 17:12:32'
+                      -
+                        id: 4
+                        content: 'New test notification 30'
+                        category: social
+                        read_at: null
+                        canceled_at: null
+                        created_at: '2023-08-13 17:18:50'
+                        updated_at: '2023-08-13 17:18:50'
+                      -
+                        id: 5
+                        content: 'New test notification 53'
+                        category: social
+                        read_at: null
+                        canceled_at: null
+                        created_at: '2023-08-13 17:21:26'
+                        updated_at: '2023-08-13 17:21:26'
+                      -
+                        id: 6
+                        content: 'New test notification 289'
+                        category: social
+                        read_at: null
+                        canceled_at: null
+                        created_at: '2023-08-13 17:24:25'
+                        updated_at: '2023-08-13 17:24:25'
+                      -
+                        id: 7
+                        content: 'New test notification 223'
+                        category: social
+                        read_at: null
+                        canceled_at: null
+                        created_at: '2023-08-13 17:26:09'
+                        updated_at: '2023-08-13 17:26:09'
+                      -
+                        id: 8
+                        content: 'New test notification 43'
+                        category: social
+                        read_at: null
+                        canceled_at: null
+                        created_at: '2023-08-13 17:26:26'
+                        updated_at: '2023-08-13 17:26:26'
+                      -
+                        id: 9
+                        content: 'New test notification 148'
+                        category: social
+                        read_at: null
+                        canceled_at: null
+                        created_at: '2023-08-13 17:26:56'
+                        updated_at: '2023-08-13 17:26:56'
+                      -
+                        id: 10
+                        content: 'New test notification 671'
+                        category: social
+                        read_at: null
+                        canceled_at: null
+                        created_at: '2023-08-13 17:27:03'
+                        updated_at: '2023-08-13 17:27:03'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        content:
+                          type: string
+                          example: 'New test notification 73'
+                        category:
+                          type: string
+                          example: social
+                        read_at:
+                          type: string
+                          example: '2023-08-13 15:22:47'
+                        canceled_at:
+                          type: string
+                          example: '2023-08-13 15:18:04'
+                        created_at:
+                          type: string
+                          example: '2023-08-13 17:09:53'
+                        updated_at:
+                          type: string
+                          example: '2023-08-13 15:22:47'
+                  current_page:
+                    type: integer
+                    example: 1
+                  last_page:
+                    type: integer
+                    example: 2
+                  per_page:
+                    type: integer
+                    example: 10
+                  from:
+                    type: integer
+                    example: 1
+                  to:
+                    type: integer
+                    example: 10
+                  total:
+                    type: integer
+                    example: 11
+                  path:
+                    type: string
+                    example: 'http://localhost/api/notification'
+                  first_page_url:
+                    type: string
+                    example: 'http://localhost/api/notification?page_size=10&page=1'
+                  prev_page_url:
+                    type: string
+                    example: null
+                  next_page_url:
+                    type: string
+                    example: 'http://localhost/api/notification?page_size=10&page=2'
+                  last_page_url:
+                    type: string
+                    example: 'http://localhost/api/notification?page_size=10&page=2'
+      tags:
+        - Notifications
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: integer
+                  description: ''
+                  example: 19
+                page_size:
+                  type: integer
+                  description: 'Must be between 1 and 100.'
+                  example: 1
+      security: []
+  '/api/notification/{id}':
+    get:
+      summary: ''
+      operationId: getApiNotificationId
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  notification:
+                    id: 1
+                    content: 'New test notification 73'
+                    category: social
+                    read_at: '2023-08-13 15:22:47'
+                    canceled_at: '2023-08-13 15:18:04'
+                    created_at: '2023-08-13 17:09:53'
+                    updated_at: '2023-08-13 15:22:47'
+                properties:
+                  notification:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      content:
+                        type: string
+                        example: 'New test notification 73'
+                      category:
+                        type: string
+                        example: social
+                      read_at:
+                        type: string
+                        example: '2023-08-13 15:22:47'
+                      canceled_at:
+                        type: string
+                        example: '2023-08-13 15:18:04'
+                      created_at:
+                        type: string
+                        example: '2023-08-13 17:09:53'
+                      updated_at:
+                        type: string
+                        example: '2023-08-13 15:22:47'
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the notification.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/notification/{id}/read':
+    patch:
+      summary: ''
+      operationId: patchApiNotificationIdRead
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the notification.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/notification/{id}/unread':
+    patch:
+      summary: ''
+      operationId: patchApiNotificationIdUnread
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the notification.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/notification/recipient/{recipientId}':
+    get:
+      summary: ''
+      operationId: getApiNotificationRecipientRecipientId
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  notifications: []
+                properties:
+                  notifications:
+                    type: array
+                    example: []
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: recipientId
+        description: ''
+        example: '35'
+        required: true
+        schema:
+          type: string
+  '/api/notification/recipient/{recipientId}/count':
+    get:
+      summary: ''
+      operationId: getApiNotificationRecipientRecipientIdCount
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  notifications_count: 0
+                properties:
+                  notifications_count:
+                    type: integer
+                    example: 0
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: recipientId
+        description: ''
+        example: '16'
+        required: true
+        schema:
+          type: string
+  '/api/notification/{id}/cancel':
+    patch:
+      summary: 'Cancel a notification'
+      operationId: cancelANotification
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Notifications
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the notification.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: Notifications
+    description: "\nEndpoints for managing notifications"

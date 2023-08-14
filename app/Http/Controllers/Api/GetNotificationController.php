@@ -10,6 +10,11 @@ use App\Traits\Http\HttpResponses;
 use Illuminate\Http\JsonResponse;
 use Throwable;
 
+/**
+ * @group Notifications
+ *
+ * Endpoints for managing notifications
+ */
 class GetNotificationController extends Controller
 {
     use HttpResponses;
@@ -18,6 +23,12 @@ class GetNotificationController extends Controller
         protected GetNotificationServiceInterface $getNotificationService
     ) {}
 
+    /**
+     * Get a single notification
+     * 
+     * This endpoint is used to return a single notification from the database.
+     * 
+     */
     public function getNotification(int $id): JsonResponse
     {
         try {

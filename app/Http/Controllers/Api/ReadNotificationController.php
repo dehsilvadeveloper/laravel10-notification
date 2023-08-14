@@ -10,6 +10,11 @@ use App\Traits\Http\HttpResponses;
 use Illuminate\Http\JsonResponse;
 use Throwable;
 
+/**
+ * @group Notifications
+ *
+ * Endpoints for managing notifications
+ */
 class ReadNotificationController extends Controller
 {
     use HttpResponses;
@@ -18,6 +23,12 @@ class ReadNotificationController extends Controller
         protected ReadNotificationServiceInterface $readNotificationService
     ) {}
 
+    /**
+     * Read a notification
+     * 
+     * This endpoint is used to mark a single notification as READ.
+     * 
+     */
     public function read(int $id): JsonResponse
     {
         try {

@@ -10,6 +10,11 @@ use App\Traits\Http\HttpResponses;
 use Illuminate\Http\JsonResponse;
 use Throwable;
 
+/**
+ * @group Notifications
+ *
+ * Endpoints for managing notifications
+ */
 class CancelNotificationController extends Controller
 {
     use HttpResponses;
@@ -18,6 +23,12 @@ class CancelNotificationController extends Controller
         protected CancelNotificationServiceInterface $cancelNotificationService
     ) {}
 
+    /**
+     * Cancel a notification
+     * 
+     * This endpoint is used to cancel a single notification.
+     * 
+     */
     public function cancel(int $id): JsonResponse
     {
         try {

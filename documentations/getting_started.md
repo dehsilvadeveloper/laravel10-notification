@@ -25,3 +25,11 @@ If you want to stop the application, use the following script:
 `make down`
 
 This script will get down all Docker containers.
+
+### Testing the api enpoints
+
+To test the endpoints you will need a program that can perform http requests. You can use **Postman** or **Insomnia**, for example.
+
+[Postman](https://www.postman.com/downloads/)
+
+[Insomnia](https://insomnia.rest/download)

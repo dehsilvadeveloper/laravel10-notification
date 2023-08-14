@@ -11,6 +11,11 @@ use App\Traits\Http\HttpResponses;
 use Illuminate\Http\JsonResponse;
 use Throwable;
 
+/**
+ * @group Notifications
+ *
+ * Endpoints for managing notifications
+ */
 class SendNotificationController extends Controller
 {
     use HttpResponses;
@@ -19,6 +24,12 @@ class SendNotificationController extends Controller
         protected SendNotificationServiceInterface $sendNotificationService
     ) {}
 
+    /**
+     * Send a notification
+     * 
+     * This endpoint is used to send a notification to a specific recipient.
+     * 
+     */
     public function send(CreateNotificationRequest $request): JsonResponse
     {
         try {

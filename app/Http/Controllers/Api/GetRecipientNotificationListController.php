@@ -7,9 +7,13 @@ use App\Http\Resources\NotificationResource;
 use App\Services\Interfaces\Notification\GetRecipientNotificationListServiceInterface;
 use App\Traits\Http\HttpResponses;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Throwable;
 
+/**
+ * @group Notifications
+ *
+ * Endpoints for managing notifications
+ */
 class GetRecipientNotificationListController extends Controller
 {
     use HttpResponses;
@@ -18,6 +22,12 @@ class GetRecipientNotificationListController extends Controller
         protected GetRecipientNotificationListServiceInterface $getRecipientNotificationListService
     ) {}
 
+    /**
+     * Get notifications of recipient
+     * 
+     * This endpoint is used to return a list of notifications related to a specific recipient.
+     * 
+     */
     public function getListByRecipient(int $recipientId): JsonResponse
     {
         try {

@@ -11,6 +11,11 @@ use App\Traits\Http\HttpResponses;
 use Illuminate\Http\JsonResponse;
 use Throwable;
 
+/**
+ * @group Notifications
+ *
+ * Endpoints for managing notifications
+ */
 class GetNotificationListController extends Controller
 {
     use HttpResponses;
@@ -19,6 +24,12 @@ class GetNotificationListController extends Controller
         protected GetNotificationPaginatedListServiceInterface $getNotificationPaginatedListService
     ) {}
 
+    /**
+     * Get all notifications
+     * 
+     * This endpoint is used to return a paginated list of notifications from the database.
+     * 
+     */
     public function getPaginatedList(GetNotificationPaginatedListRequest $request)
     {
         try {
