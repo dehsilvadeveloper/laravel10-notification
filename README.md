@@ -26,10 +26,11 @@ The project was created for learn/check features of **Laravel 10**. It also work
 - Use concepts of repository pattern
 - Use Data Transfer Objects (DTOs) to transport groups of data between the application layers
 - Use Form-Request classes to validate input data
+- Use resource classes to format the output data of endpoints
 - Create unit tests for the application using PHPUNIT
 
 ## Docs
 
-* [Getting Started](./docs/getting_started.md) (WIP)
-* [CORS](./docs/cors.md) (WIP)
-* [Available Make Scripts](./docs/available_make_scripts.md) (WIP)
+* [Getting Started](./docs/getting_started.md)
+* [Api Documentation](./docs/api-documentation.md) (WIP)
+* [Available Make Scripts](./docs/available_make_scripts.md)
