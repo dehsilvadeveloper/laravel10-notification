@@ -28,6 +28,7 @@ The project uses a *Dockerized* environment and was created for refinement of **
 - Use Form-Request classes to validate input data
 - Use resource classes to format the output data of endpoints
 - Use customized pagination with one of the endpoints
+- Implementing API endpoints documentation using the package **Scribe**
 - Create unit tests for the application using PHPUNIT
 
 ## Docs

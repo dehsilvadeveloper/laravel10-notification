@@ -98,9 +98,9 @@ docker-compose down
 
 This script will get down all Docker containers and the application will not be available for use anymore.
 
-### Testing the api enpoints
+### Testing the API enpoints
 
-To test the endpoints you will need a program that can perform http requests. You can use **Postman** or **Insomnia**, for example.
+To test the API endpoints you will need a program that can perform http requests. You can use **Postman** or **Insomnia**, for example.
 
 [Postman](https://www.postman.com/downloads/)
 
