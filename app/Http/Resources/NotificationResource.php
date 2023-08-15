@@ -13,6 +13,7 @@ class NotificationResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'recipient_id' => $this->recipient_id,
             'content' => $this->content,
             'category' => $this->category,
             'read_at' => $this->read_at?->format('Y-m-d H:i:s'),

@@ -28,6 +28,25 @@ class GetNotificationController extends Controller
      * 
      * This endpoint is used to return a single notification from the database.
      * 
+     * @response 200 scenario=success {
+     *   "notification": {
+     *     "id": 6,
+     *     "recipient_id": 2,
+     *     "content": "New test notification 289",
+     *     "category": "social",
+     *     "read_at": null,
+     *     "canceled_at": null,
+     *     "created_at": "2023-08-13 17:24:25",
+     *     "updated_at": "2023-08-13 17:24:25"
+     *   }
+     * }
+     * @response status=404 scenario="notification not found" {
+     *   "message": "The notification could not be found.",
+     *   "data": {
+     *       "id": 99999
+     *   }
+     * }
+     * 
      */
     public function getNotification(int $id): JsonResponse
     {

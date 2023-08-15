@@ -27,6 +27,31 @@ class GetRecipientNotificationListController extends Controller
      * 
      * This endpoint is used to return a list of notifications related to a specific recipient.
      * 
+     * @response 200 scenario=success {    
+    *    "notifications": [
+    *        {
+    *            "id": 1,
+    *            "recipient_id": 637,
+    *            "content": "New test notification 73",
+    *            "category": "social",
+    *            "read_at": null,
+    *            "canceled_at": null,
+    *            "created_at": "2023-08-13 17:09:53",
+    *            "updated_at": "2023-08-15 11:46:13"
+    *        },
+    *        {
+    *            "id": 2,
+    *            "recipient_id": 637,
+    *            "content": "New test notification 55",
+    *            "category": "professional",
+    *            "read_at": null,
+    *            "canceled_at": null,
+    *            "created_at": "2023-08-13 17:09:53",
+    *            "updated_at": "2023-08-15 11:46:13"
+    *        }
+    *    ]
+     * }
+     * 
      */
     public function getListByRecipient(int $recipientId): JsonResponse
     {

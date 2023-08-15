@@ -28,6 +28,26 @@ class ReadNotificationController extends Controller
      * 
      * This endpoint is used to mark a single notification as READ.
      * 
+     * @response 200 scenario=success {    
+     *   "message": "Notification marked as read with success.",
+     *   "notification": {
+     *     "id": 1,
+     *     "recipient_id": 257,
+     *     "content": "New test notification 12",
+     *     "category": "professional",
+     *     "read_at": "2023-08-15 11:46:13",
+     *     "canceled_at": null,
+     *     "created_at": "2023-08-13 17:09:53",
+     *     "updated_at": "2023-08-15 11:46:13"
+     *   }
+     * }
+     * @response status=404 scenario="notification not found" {
+     *   "message": "The notification could not be found.",
+     *   "data": {
+     *       "id": 99999
+     *   }
+     * }
+     * 
      */
     public function read(int $id): JsonResponse
     {

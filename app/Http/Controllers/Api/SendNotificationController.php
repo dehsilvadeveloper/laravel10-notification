@@ -29,6 +29,20 @@ class SendNotificationController extends Controller
      * 
      * This endpoint is used to send a notification to a specific recipient.
      * 
+     * @response 200 scenario=success {    
+     *   "message": "Notification sent with success.",
+     *   "notification": {
+     *     "id": 5,
+     *     "recipient_id": 111,
+     *     "content": "New test notification 98",
+     *     "category": "social",
+     *     "read_at": null,
+     *     "canceled_at": null,
+     *     "created_at": "2023-08-15 11:59:26",
+     *     "updated_at": "2023-08-15 11:59:26"
+     *   }
+     * }
+     * 
      */
     public function send(CreateNotificationRequest $request): JsonResponse
     {

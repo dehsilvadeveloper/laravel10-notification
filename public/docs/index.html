@@ -142,9 +142,9 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"recipient_id\": 11,
-    \"content\": \"joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg\",
-    \"category\": \"social\"
+    \"recipient_id\": 14,
+    \"content\": \"xmadotbojxoaubsvaakvwnvodxvphyjvmkfdhakraparbofsiwtgbrfextzkwiqtqmwwfxecn\",
+    \"category\": \"professional\"
 }"
 </code></pre></div>
 
@@ -159,9 +159,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'recipient_id' =&gt; 11,
-            'content' =&gt; 'joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg',
-            'category' =&gt; 'social',
+            'recipient_id' =&gt; 14,
+            'content' =&gt; 'xmadotbojxoaubsvaakvwnvodxvphyjvmkfdhakraparbofsiwtgbrfextzkwiqtqmwwfxecn',
+            'category' =&gt; 'professional',
         ],
     ]
 );
@@ -180,9 +180,9 @@ const headers = {
 };
 
 let body = {
-    "recipient_id": 11,
-    "content": "joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg",
-    "category": "social"
+    "recipient_id": 14,
+    "content": "xmadotbojxoaubsvaakvwnvodxvphyjvmkfdhakraparbofsiwtgbrfextzkwiqtqmwwfxecn",
+    "category": "professional"
 };
 
 fetch(url, {
@@ -198,9 +198,9 @@ import json
 
 url = 'http://localhost:9999/api/notification'
 payload = {
-    "recipient_id": 11,
-    "content": "joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg",
-    "category": "social"
+    "recipient_id": 14,
+    "content": "xmadotbojxoaubsvaakvwnvodxvphyjvmkfdhakraparbofsiwtgbrfextzkwiqtqmwwfxecn",
+    "category": "professional"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -213,7 +213,26 @@ response.json()</code></pre></div>
 </span>
 
 <span id="example-responses-POSTapi-notification">
-</span>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Notification sent with success.&quot;,
+    &quot;notification&quot;: {
+        &quot;id&quot;: 5,
+        &quot;recipient_id&quot;: 111,
+        &quot;content&quot;: &quot;New test notification 98&quot;,
+        &quot;category&quot;: &quot;social&quot;,
+        &quot;read_at&quot;: null,
+        &quot;canceled_at&quot;: null,
+        &quot;created_at&quot;: &quot;2023-08-15 11:59:26&quot;,
+        &quot;updated_at&quot;: &quot;2023-08-15 11:59:26&quot;
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-POSTapi-notification" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-POSTapi-notification"></span>:
@@ -273,10 +292,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="recipient_id"                data-endpoint="POSTapi-notification"
-               value="11"
+               value="14"
                data-component="body">
     <br>
-<p>Example: <code>11</code></p>
+<p>Example: <code>14</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>content</code></b>&nbsp;&nbsp;
@@ -284,10 +303,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="content"                data-endpoint="POSTapi-notification"
-               value="joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg"
+               value="xmadotbojxoaubsvaakvwnvodxvphyjvmkfdhakraparbofsiwtgbrfextzkwiqtqmwwfxecn"
                data-component="body">
     <br>
-<p>Must be at least 3 characters. Example: <code>joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg</code></p>
+<p>Must be at least 3 characters. Example: <code>xmadotbojxoaubsvaakvwnvodxvphyjvmkfdhakraparbofsiwtgbrfextzkwiqtqmwwfxecn</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
@@ -295,10 +314,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="category"                data-endpoint="POSTapi-notification"
-               value="social"
+               value="professional"
                data-component="body">
     <br>
-<p>Must be one of <code>social</code> or <code>professional</code>. Example: <code>social</code></p>
+<p>Must be one of <code>social</code> or <code>professional</code>. Example: <code>professional</code></p>
         </div>
         </form>
 
@@ -315,7 +334,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:9999/api/notification?page=2&amp;page_size=10" \
+    --get "http://localhost:9999/api/notification?page=1&amp;page_size=10" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -330,7 +349,7 @@ $response = $client-&gt;get(
             'Accept' =&gt; 'application/json',
         ],
         'query' =&gt; [
-            'page' =&gt; '2',
+            'page' =&gt; '1',
             'page_size' =&gt; '10',
         ],
     ]
@@ -345,7 +364,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 );
 
 const params = {
-    "page": "2",
+    "page": "1",
     "page_size": "10",
 };
 Object.keys(params)
@@ -368,7 +387,7 @@ import json
 
 url = 'http://localhost:9999/api/notification'
 params = {
-  'page': '2',
+  'page': '1',
   'page_size': '10',
 }
 headers = {
@@ -392,33 +411,124 @@ response.json()</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 55
+x-ratelimit-remaining: 59
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 11,
-            &quot;content&quot;: &quot;New test notification 513&quot;,
+            &quot;id&quot;: 1,
+            &quot;recipient_id&quot;: 637,
+            &quot;content&quot;: &quot;New test notification 73&quot;,
+            &quot;category&quot;: &quot;social&quot;,
+            &quot;read_at&quot;: &quot;2023-08-13 15:22:47&quot;,
+            &quot;canceled_at&quot;: &quot;2023-08-15 11:46:13&quot;,
+            &quot;created_at&quot;: &quot;2023-08-13 17:09:53&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-15 11:46:13&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;recipient_id&quot;: 810,
+            &quot;content&quot;: &quot;New test notification 418&quot;,
+            &quot;category&quot;: &quot;social&quot;,
+            &quot;read_at&quot;: null,
+            &quot;canceled_at&quot;: &quot;2023-08-13 18:02:33&quot;,
+            &quot;created_at&quot;: &quot;2023-08-13 17:11:17&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-13 15:27:35&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;recipient_id&quot;: 937,
+            &quot;content&quot;: &quot;New test notification 707&quot;,
             &quot;category&quot;: &quot;social&quot;,
             &quot;read_at&quot;: null,
             &quot;canceled_at&quot;: null,
-            &quot;created_at&quot;: &quot;2023-08-13 17:35:34&quot;,
-            &quot;updated_at&quot;: &quot;2023-08-13 17:35:34&quot;
+            &quot;created_at&quot;: &quot;2023-08-13 17:12:32&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-13 17:12:32&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;recipient_id&quot;: 686,
+            &quot;content&quot;: &quot;New test notification 30&quot;,
+            &quot;category&quot;: &quot;social&quot;,
+            &quot;read_at&quot;: null,
+            &quot;canceled_at&quot;: null,
+            &quot;created_at&quot;: &quot;2023-08-13 17:18:50&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-13 17:18:50&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;recipient_id&quot;: 761,
+            &quot;content&quot;: &quot;New test notification 53&quot;,
+            &quot;category&quot;: &quot;social&quot;,
+            &quot;read_at&quot;: null,
+            &quot;canceled_at&quot;: null,
+            &quot;created_at&quot;: &quot;2023-08-13 17:21:26&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-13 17:21:26&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;recipient_id&quot;: 460,
+            &quot;content&quot;: &quot;New test notification 289&quot;,
+            &quot;category&quot;: &quot;social&quot;,
+            &quot;read_at&quot;: null,
+            &quot;canceled_at&quot;: null,
+            &quot;created_at&quot;: &quot;2023-08-13 17:24:25&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-13 17:24:25&quot;
+        },
+        {
+            &quot;id&quot;: 7,
+            &quot;recipient_id&quot;: 507,
+            &quot;content&quot;: &quot;New test notification 223&quot;,
+            &quot;category&quot;: &quot;social&quot;,
+            &quot;read_at&quot;: null,
+            &quot;canceled_at&quot;: null,
+            &quot;created_at&quot;: &quot;2023-08-13 17:26:09&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-13 17:26:09&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;recipient_id&quot;: 720,
+            &quot;content&quot;: &quot;New test notification 43&quot;,
+            &quot;category&quot;: &quot;social&quot;,
+            &quot;read_at&quot;: null,
+            &quot;canceled_at&quot;: null,
+            &quot;created_at&quot;: &quot;2023-08-13 17:26:26&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-13 17:26:26&quot;
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;recipient_id&quot;: 727,
+            &quot;content&quot;: &quot;New test notification 148&quot;,
+            &quot;category&quot;: &quot;social&quot;,
+            &quot;read_at&quot;: null,
+            &quot;canceled_at&quot;: null,
+            &quot;created_at&quot;: &quot;2023-08-13 17:26:56&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-13 17:26:56&quot;
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;recipient_id&quot;: 541,
+            &quot;content&quot;: &quot;New test notification 671&quot;,
+            &quot;category&quot;: &quot;social&quot;,
+            &quot;read_at&quot;: null,
+            &quot;canceled_at&quot;: null,
+            &quot;created_at&quot;: &quot;2023-08-13 17:27:03&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-13 17:27:03&quot;
         }
     ],
-    &quot;current_page&quot;: 2,
+    &quot;current_page&quot;: 1,
     &quot;last_page&quot;: 2,
     &quot;per_page&quot;: 10,
-    &quot;from&quot;: 11,
-    &quot;to&quot;: 11,
-    &quot;total&quot;: 11,
-    &quot;path&quot;: &quot;http://localhost/api/notification&quot;,
-    &quot;first_page_url&quot;: &quot;http://localhost/api/notification?page_size=10&amp;page=1&quot;,
-    &quot;prev_page_url&quot;: &quot;http://localhost/api/notification?page_size=10&amp;page=1&quot;,
-    &quot;next_page_url&quot;: null,
-    &quot;last_page_url&quot;: &quot;http://localhost/api/notification?page_size=10&amp;page=2&quot;
+    &quot;from&quot;: 1,
+    &quot;to&quot;: 10,
+    &quot;total&quot;: 12,
+    &quot;path&quot;: &quot;http://localhost:9999/api/notification&quot;,
+    &quot;first_page_url&quot;: &quot;http://localhost:9999/api/notification?page_size=10&amp;page=1&quot;,
+    &quot;prev_page_url&quot;: null,
+    &quot;next_page_url&quot;: &quot;http://localhost:9999/api/notification?page_size=10&amp;page=2&quot;,
+    &quot;last_page_url&quot;: &quot;http://localhost:9999/api/notification?page_size=10&amp;page=2&quot;
 }</code>
  </pre>
     </span>
@@ -481,10 +591,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="page"                data-endpoint="GETapi-notification"
-               value="2"
+               value="1"
                data-component="query">
     <br>
-<p>The page number of pagination. Example: <code>2</code></p>
+<p>The page number of pagination. Example: <code>1</code></p>
             </div>
                                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>page_size</code></b>&nbsp;&nbsp;
@@ -565,28 +675,32 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-notification--id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (200, success):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 54
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;notification&quot;: {
-        &quot;id&quot;: 1,
-        &quot;content&quot;: &quot;New test notification 73&quot;,
+        &quot;id&quot;: 6,
+        &quot;recipient_id&quot;: 2,
+        &quot;content&quot;: &quot;New test notification 289&quot;,
         &quot;category&quot;: &quot;social&quot;,
-        &quot;read_at&quot;: &quot;2023-08-13 15:22:47&quot;,
-        &quot;canceled_at&quot;: &quot;2023-08-15 11:46:13&quot;,
-        &quot;created_at&quot;: &quot;2023-08-13 17:09:53&quot;,
-        &quot;updated_at&quot;: &quot;2023-08-15 11:46:13&quot;
+        &quot;read_at&quot;: null,
+        &quot;canceled_at&quot;: null,
+        &quot;created_at&quot;: &quot;2023-08-13 17:24:25&quot;,
+        &quot;updated_at&quot;: &quot;2023-08-13 17:24:25&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, notification not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The notification could not be found.&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 99999
     }
 }</code>
  </pre>
@@ -731,6 +845,7 @@ response.json()</code></pre></div>
     &quot;message&quot;: &quot;Notification canceled with success.&quot;,
     &quot;notification&quot;: {
         &quot;id&quot;: 1,
+        &quot;recipient_id&quot;: 43,
         &quot;content&quot;: &quot;New test notification 73&quot;,
         &quot;category&quot;: &quot;professional&quot;,
         &quot;read_at&quot;: null,
@@ -884,7 +999,38 @@ response.json()</code></pre></div>
 </span>
 
 <span id="example-responses-PATCHapi-notification--id--read">
-</span>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Notification marked as read with success.&quot;,
+    &quot;notification&quot;: {
+        &quot;id&quot;: 1,
+        &quot;recipient_id&quot;: 257,
+        &quot;content&quot;: &quot;New test notification 12&quot;,
+        &quot;category&quot;: &quot;professional&quot;,
+        &quot;read_at&quot;: &quot;2023-08-15 11:46:13&quot;,
+        &quot;canceled_at&quot;: null,
+        &quot;created_at&quot;: &quot;2023-08-13 17:09:53&quot;,
+        &quot;updated_at&quot;: &quot;2023-08-15 11:46:13&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, notification not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The notification could not be found.&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 99999
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-PATCHapi-notification--id--read" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PATCHapi-notification--id--read"></span>:
@@ -1016,7 +1162,38 @@ response.json()</code></pre></div>
 </span>
 
 <span id="example-responses-PATCHapi-notification--id--unread">
-</span>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Notification marked as unread with success.&quot;,
+    &quot;notification&quot;: {
+        &quot;id&quot;: 1,
+        &quot;recipient_id&quot;: 510,
+        &quot;content&quot;: &quot;New test notification 12&quot;,
+        &quot;category&quot;: &quot;professional&quot;,
+        &quot;read_at&quot;: &quot;2023-08-15 11:46:13&quot;,
+        &quot;canceled_at&quot;: null,
+        &quot;created_at&quot;: &quot;2023-08-13 17:09:53&quot;,
+        &quot;updated_at&quot;: &quot;2023-08-15 11:46:13&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, notification not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The notification could not be found.&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 99999
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-PATCHapi-notification--id--unread" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PATCHapi-notification--id--unread"></span>:
@@ -1096,7 +1273,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:9999/api/notification/recipient/3805" \
+    --get "http://localhost:9999/api/notification/recipient/074" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1104,7 +1281,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:9999/api/notification/recipient/3805',
+    'http://localhost:9999/api/notification/recipient/074',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -1118,7 +1295,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:9999/api/notification/recipient/3805"
+    "http://localhost:9999/api/notification/recipient/074"
 );
 
 const headers = {
@@ -1136,7 +1313,7 @@ fetch(url, {
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:9999/api/notification/recipient/3805'
+url = 'http://localhost:9999/api/notification/recipient/074'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -1149,21 +1326,33 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-notification-recipient--recipientId-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (200, success):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 53
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;notifications&quot;: []
+    &quot;notifications&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;recipient_id&quot;: 637,
+            &quot;content&quot;: &quot;New test notification 73&quot;,
+            &quot;category&quot;: &quot;social&quot;,
+            &quot;read_at&quot;: null,
+            &quot;canceled_at&quot;: null,
+            &quot;created_at&quot;: &quot;2023-08-13 17:09:53&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-15 11:46:13&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;recipient_id&quot;: 637,
+            &quot;content&quot;: &quot;New test notification 55&quot;,
+            &quot;category&quot;: &quot;professional&quot;,
+            &quot;read_at&quot;: null,
+            &quot;canceled_at&quot;: null,
+            &quot;created_at&quot;: &quot;2023-08-13 17:09:53&quot;,
+            &quot;updated_at&quot;: &quot;2023-08-15 11:46:13&quot;
+        }
+    ]
 }</code>
  </pre>
     </span>
@@ -1226,10 +1415,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="recipientId"                data-endpoint="GETapi-notification-recipient--recipientId-"
-               value="3805"
+               value="074"
                data-component="url">
     <br>
-<p>Example: <code>3805</code></p>
+<p>Example: <code>074</code></p>
             </div>
                     </form>
 
@@ -1238,7 +1427,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <p>
 </p>
 
-<p>This endpoint is used to return a count of notifications related to a specific recipient.</p>
+<p>This endpoint is used to return a counter of notifications related to a specific recipient.</p>
 
 <span id="example-requests-GETapi-notification-recipient--recipientId--count">
 <blockquote>Example request:</blockquote>
@@ -1246,7 +1435,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:9999/api/notification/recipient/4755/count" \
+    --get "http://localhost:9999/api/notification/recipient/16/count" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1254,7 +1443,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:9999/api/notification/recipient/4755/count',
+    'http://localhost:9999/api/notification/recipient/16/count',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -1268,7 +1457,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:9999/api/notification/recipient/4755/count"
+    "http://localhost:9999/api/notification/recipient/16/count"
 );
 
 const headers = {
@@ -1286,7 +1475,7 @@ fetch(url, {
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:9999/api/notification/recipient/4755/count'
+url = 'http://localhost:9999/api/notification/recipient/16/count'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -1299,21 +1488,12 @@ response.json()</code></pre></div>
 
 <span id="example-responses-GETapi-notification-recipient--recipientId--count">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (200, success):</p>
         </blockquote>
-                <details class="annotation">
-            <summary style="cursor: pointer;">
-                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
-            </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 52
-access-control-allow-origin: *
- </code></pre></details>         <pre>
+                <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;notifications_count&quot;: 0
+    &quot;notifications_count&quot;: 12
 }</code>
  </pre>
     </span>
@@ -1376,10 +1556,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="recipientId"                data-endpoint="GETapi-notification-recipient--recipientId--count"
-               value="4755"
+               value="16"
                data-component="url">
     <br>
-<p>Example: <code>4755</code></p>
+<p>Example: <code>16</code></p>
             </div>
                     </form>
 

@@ -24,7 +24,11 @@ class GetRecipientNotificationCountController extends Controller
     /**
      * Count notifications of recipient
      * 
-     * This endpoint is used to return a count of notifications related to a specific recipient.
+     * This endpoint is used to return a counter of notifications related to a specific recipient.
+     * 
+     * @response 200 scenario=success {    
+     *   "notifications_count": 12
+     * }
      * 
      */
     public function getCountByRecipient(int $recipientId): JsonResponse

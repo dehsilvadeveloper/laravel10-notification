@@ -32,6 +32,7 @@ class CancelNotificationController extends Controller
      *   "message": "Notification canceled with success.",
      *   "notification": {
      *     "id": 1,
+     *     "recipient_id": 43,
      *     "content": "New test notification 73",
      *     "category": "professional",
      *     "read_at": null,
