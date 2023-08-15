@@ -106,12 +106,11 @@ class GetNotificationPaginatedListRequestTest extends TestCase
         $validator = Validator::make($data, $request->rules());
 
         $this->assertTrue($validator->fails());
-        $this->assertCount(2, $validator->errors());
+        $this->assertCount(1, $validator->errors());
         $this->assertTrue($validator->errors()->has('page_size'));
 
         $expectedMessages = [
-            'The page size field must be an integer.',
-            'The page size field must be greater than 0.',
+            'The page size field must be an integer.'
         ];
 
         $this->assertEquals(
@@ -123,11 +122,11 @@ class GetNotificationPaginatedListRequestTest extends TestCase
     /**
      * @group NotificationFormRequest
      */
-    public function test_page_size_not_greater_than_value_fail(): void
+    public function test_page_size_with_value_not_allowed_fail(): void
     {
         $data = [
             'page' => 1,
-            'page_size' => 0
+            'page_size' => 101
         ];
 
         $request = (new GetNotificationPaginatedListRequest())->replace($data);
@@ -137,7 +136,7 @@ class GetNotificationPaginatedListRequestTest extends TestCase
         $this->assertCount(1, $validator->errors());
         $this->assertTrue($validator->errors()->has('page_size'));
         $this->assertEquals(
-            'The page size field must be greater than 0.',
+            'The page size field must be between 1 and 100.',
             $validator->errors()->first('page_size')
         );
     }

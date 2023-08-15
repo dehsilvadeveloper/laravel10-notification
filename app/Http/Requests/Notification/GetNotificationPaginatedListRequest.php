@@ -32,12 +32,10 @@ class GetNotificationPaginatedListRequest extends FormRequest
         return [
             'page' => [
                 'description' => 'The page number of pagination',
-                'default' => 1,
                 'example' => 2
             ],
             'page_size' => [
                 'description' => 'The quantity of items (page size) of pagination.',
-                'default' => 10,
                 'example' => 10
             ],
         ];
