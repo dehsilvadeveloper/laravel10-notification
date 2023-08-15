@@ -40,11 +40,11 @@ Generate a Laravel key with the command php artisan key:generate. You can check 
 
 #### `make migrate`
 
-Run Laravel migrations, creating the database structure for the application.
+Run the Laravel migrations, creating the database structure for the application.
 
 #### `make seed`
 
-Run Laravel seeds, filling the database tables with necessary data.
+Run the Laravel seeders, filling the database tables with necessary data.
 
 #### `make refresh-database`
 

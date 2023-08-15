@@ -33,5 +33,7 @@ The project was created for learn/check features of **Laravel 10**. It also work
 ## Docs
 
 * [Getting Started](./documentations/getting_started.md)
-* [Api Documentation](./documentations/api-documentation.md) (WIP)
+* [Getting Started (For Windows users)](./documentations/getting_started_for_windows.md)
+* [Adding new dependencies](./documentations/adding_new_dependencies.md)
+* [Api Documentation](./documentations/api-documentation.md)
 * [Available Make Scripts](./documentations/available_make_scripts.md)
