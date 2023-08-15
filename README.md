@@ -4,9 +4,9 @@
 
 # Laravel 10 Notification  🔥 🚀
 
-This is a Laravel v10.x application to control notifications using a Dockerized environment. 
+This is a **Laravel v10.x** api to *emulate* a notification system, manipulating the notifications data through defined endpoints. No real notifications are dispatched, the application is just for controlling the notifications history.
 
-The project was created for learn/check features of **Laravel 10**. It also work as a skills showcase.
+The project uses a *Dockerized* environment and was created for refinement of **Laravel** knowledge considering the newest version of the framework (at the time of his creation). It also work as a skills showcase.
 
 ## Build with
 
