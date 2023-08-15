@@ -28,6 +28,25 @@ class CancelNotificationController extends Controller
      * 
      * This endpoint is used to cancel a single notification.
      * 
+     * @response 200 scenario=success {    
+     *   "message": "Notification canceled with success.",
+     *   "notification": {
+     *     "id": 1,
+     *     "content": "New test notification 73",
+     *     "category": "professional",
+     *     "read_at": null,
+     *     "canceled_at": "2023-08-15 11:46:13",
+     *     "created_at": "2023-08-13 17:09:53",
+     *     "updated_at": "2023-08-15 11:46:13"
+     *   }
+     * }
+     * @response status=404 scenario="notification not found" {
+     *   "message": "The notification could not be found.",
+     *   "data": {
+     *       "id": 99999
+     *   }
+     * }
+     * 
      */
     public function cancel(int $id): JsonResponse
     {

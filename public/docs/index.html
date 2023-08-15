@@ -102,7 +102,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: August 14, 2023</li>
+        <li>Last updated: August 15, 2023</li>
     </ul>
 </div>
 
@@ -142,9 +142,9 @@ You can switch the language used with the tabs at the top right (or from the nav
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"recipient_id\": 12,
-    \"content\": \"mknrxrpgwagkafyyqprsymp\",
-    \"category\": \"professional\"
+    \"recipient_id\": 11,
+    \"content\": \"joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg\",
+    \"category\": \"social\"
 }"
 </code></pre></div>
 
@@ -159,9 +159,9 @@ $response = $client-&gt;post(
             'Accept' =&gt; 'application/json',
         ],
         'json' =&gt; [
-            'recipient_id' =&gt; 12,
-            'content' =&gt; 'mknrxrpgwagkafyyqprsymp',
-            'category' =&gt; 'professional',
+            'recipient_id' =&gt; 11,
+            'content' =&gt; 'joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg',
+            'category' =&gt; 'social',
         ],
     ]
 );
@@ -180,9 +180,9 @@ const headers = {
 };
 
 let body = {
-    "recipient_id": 12,
-    "content": "mknrxrpgwagkafyyqprsymp",
-    "category": "professional"
+    "recipient_id": 11,
+    "content": "joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg",
+    "category": "social"
 };
 
 fetch(url, {
@@ -198,9 +198,9 @@ import json
 
 url = 'http://localhost:9999/api/notification'
 payload = {
-    "recipient_id": 12,
-    "content": "mknrxrpgwagkafyyqprsymp",
-    "category": "professional"
+    "recipient_id": 11,
+    "content": "joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg",
+    "category": "social"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -273,10 +273,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="recipient_id"                data-endpoint="POSTapi-notification"
-               value="12"
+               value="11"
                data-component="body">
     <br>
-<p>Example: <code>12</code></p>
+<p>Example: <code>11</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>content</code></b>&nbsp;&nbsp;
@@ -284,10 +284,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="content"                data-endpoint="POSTapi-notification"
-               value="mknrxrpgwagkafyyqprsymp"
+               value="joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg"
                data-component="body">
     <br>
-<p>Must be at least 3 characters. Example: <code>mknrxrpgwagkafyyqprsymp</code></p>
+<p>Must be at least 3 characters. Example: <code>joumqkvuoxrzgcaiijkfkbnxnebtbkefvuzjklg</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>category</code></b>&nbsp;&nbsp;
@@ -295,10 +295,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="category"                data-endpoint="POSTapi-notification"
-               value="professional"
+               value="social"
                data-component="body">
     <br>
-<p>Must be one of <code>social</code> or <code>professional</code>. Example: <code>professional</code></p>
+<p>Must be one of <code>social</code> or <code>professional</code>. Example: <code>social</code></p>
         </div>
         </form>
 
@@ -392,7 +392,7 @@ response.json()</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
+x-ratelimit-remaining: 55
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -574,7 +574,7 @@ response.json()</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
+x-ratelimit-remaining: 54
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -584,9 +584,9 @@ access-control-allow-origin: *
         &quot;content&quot;: &quot;New test notification 73&quot;,
         &quot;category&quot;: &quot;social&quot;,
         &quot;read_at&quot;: &quot;2023-08-13 15:22:47&quot;,
-        &quot;canceled_at&quot;: &quot;2023-08-13 15:18:04&quot;,
+        &quot;canceled_at&quot;: &quot;2023-08-15 11:46:13&quot;,
         &quot;created_at&quot;: &quot;2023-08-13 17:09:53&quot;,
-        &quot;updated_at&quot;: &quot;2023-08-13 15:22:47&quot;
+        &quot;updated_at&quot;: &quot;2023-08-15 11:46:13&quot;
     }
 }</code>
  </pre>
@@ -722,7 +722,37 @@ response.json()</code></pre></div>
 </span>
 
 <span id="example-responses-PATCHapi-notification--id--cancel">
-</span>
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Notification canceled with success.&quot;,
+    &quot;notification&quot;: {
+        &quot;id&quot;: 1,
+        &quot;content&quot;: &quot;New test notification 73&quot;,
+        &quot;category&quot;: &quot;professional&quot;,
+        &quot;read_at&quot;: null,
+        &quot;canceled_at&quot;: &quot;2023-08-15 11:46:13&quot;,
+        &quot;created_at&quot;: &quot;2023-08-13 17:09:53&quot;,
+        &quot;updated_at&quot;: &quot;2023-08-15 11:46:13&quot;
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (404, notification not found):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The notification could not be found.&quot;,
+    &quot;data&quot;: {
+        &quot;id&quot;: 99999
+    }
+}</code>
+ </pre>
+    </span>
 <span id="execution-results-PATCHapi-notification--id--cancel" hidden>
     <blockquote>Received response<span
                 id="execution-response-status-PATCHapi-notification--id--cancel"></span>:
@@ -1066,7 +1096,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:9999/api/notification/recipient/149" \
+    --get "http://localhost:9999/api/notification/recipient/3805" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1074,7 +1104,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:9999/api/notification/recipient/149',
+    'http://localhost:9999/api/notification/recipient/3805',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -1088,7 +1118,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:9999/api/notification/recipient/149"
+    "http://localhost:9999/api/notification/recipient/3805"
 );
 
 const headers = {
@@ -1106,7 +1136,7 @@ fetch(url, {
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:9999/api/notification/recipient/149'
+url = 'http://localhost:9999/api/notification/recipient/3805'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -1128,7 +1158,7 @@ response.json()</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-remaining: 53
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1196,10 +1226,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="recipientId"                data-endpoint="GETapi-notification-recipient--recipientId-"
-               value="149"
+               value="3805"
                data-component="url">
     <br>
-<p>Example: <code>149</code></p>
+<p>Example: <code>3805</code></p>
             </div>
                     </form>
 
@@ -1216,7 +1246,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:9999/api/notification/recipient/768839/count" \
+    --get "http://localhost:9999/api/notification/recipient/4755/count" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1224,7 +1254,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost:9999/api/notification/recipient/768839/count',
+    'http://localhost:9999/api/notification/recipient/4755/count',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -1238,7 +1268,7 @@ print_r(json_decode((string) $body));</code></pre></div>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:9999/api/notification/recipient/768839/count"
+    "http://localhost:9999/api/notification/recipient/4755/count"
 );
 
 const headers = {
@@ -1256,7 +1286,7 @@ fetch(url, {
     <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost:9999/api/notification/recipient/768839/count'
+url = 'http://localhost:9999/api/notification/recipient/4755/count'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -1278,7 +1308,7 @@ response.json()</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 52
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
@@ -1346,10 +1376,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="recipientId"                data-endpoint="GETapi-notification-recipient--recipientId--count"
-               value="768839"
+               value="4755"
                data-component="url">
     <br>
-<p>Example: <code>768839</code></p>
+<p>Example: <code>4755</code></p>
             </div>
                     </form>
 
