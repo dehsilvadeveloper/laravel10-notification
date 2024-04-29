@@ -47,7 +47,8 @@ tmp/*
 .env.production
 
 # Docker
-.docker/mysql/dbdata
+.docker/mysql/dbdata/*
+!.docker/mysql/dbdata/.gitkeep 
 
 # Homestead
 Homestead.json
